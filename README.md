@@ -4,8 +4,8 @@
 
 ## 1.优点：不需要依赖其他第三方库，灵活可配置：
 
-![](./src/assets/helper/title@2x.png)
-![](./src/assets/helper/timespilt@2x.png)
+![](./datepicker-for-vue/src/assets/helper/title@2x.png)
+![](./datepicker-for-vue/src/assets/helper/timespilt@2x.png)
 
 ## 2.用法：参见 src/view/demo.vue 文件的用法，简单易懂
 ```

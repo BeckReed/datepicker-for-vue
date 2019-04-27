@@ -1,4 +1,3 @@
 .idea/*
 build/*
 ./datepicker-for-vue/node_modules/*
-.history/*

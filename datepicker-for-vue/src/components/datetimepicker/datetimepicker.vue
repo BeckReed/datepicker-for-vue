@@ -1,21 +1,16 @@
 <template>
-    <div class="zx_mask fe-datetimepikcer-wrapper" v-show="selfShow">
-        <div class="zx_select showPicker picker-columns">
+    <div class="dp_mask fe-datetimepikcer-wrapper" v-show="selfShow">
+        <div class="dp_select showPicker picker-columns">
             <header>
-                <button class="nav_left picker-cancel" @click="cancel">取消</button>                
+                <button class="nav_left picker-cancel" @click="cancel">取消</button>
                 <slot></slot><!-- 这里插入标题的内容 -->
                 <button class="nav_right picker-ok" @click="confirm">确定</button>
             </header>
             <div class="ub" id="wrapper-parent">
-                <div class="ub-f1 picker-wrapper" 
-                        id="yearId"
-                        :ref="yearId"                        
-                        v-on:touchstart.stop.prevent="touchStartItem($event,containerOptions.yearContainer,1)" 
-                        v-on:touchmove.stop.prevent="touchMoveItem($event,containerOptions.yearContainer,1)" 
-                        v-on:touchend.stop.prevent="touchEndItem($event,containerOptions.yearContainer,1)">
+                <div class="ub-f1 picker-wrapper" id="yearId" :ref="yearId" v-on:touchstart.stop.prevent="touchStartItem($event,containerOptions.yearContainer,1)" v-on:touchmove.stop.prevent="touchMoveItem($event,containerOptions.yearContainer,1)" v-on:touchend.stop.prevent="touchEndItem($event,containerOptions.yearContainer,1)">
                     <ul v-bind:style="{
                         transition:yearTransition,
-                        transform:yearTransform}" >
+                        transform:yearTransform}">
                         <li></li>
                         <li></li>
                         <li v-for="item in years" :key="item">
@@ -25,15 +20,10 @@
                         <li></li>
                     </ul>
                 </div>
-                <div class="ub-f1 picker-wrapper" 
-                        id="monthId" 
-                        :ref="monthId"
-                        v-on:touchstart.stop.prevent="touchStartItem($event,containerOptions.monthContainer,2)" 
-                        v-on:touchmove.stop.prevent="touchMoveItem($event,containerOptions.monthContainer,2)" 
-                        v-on:touchend.stop.prevent="touchEndItem($event,containerOptions.monthContainer,2)">
+                <div class="ub-f1 picker-wrapper" id="monthId" :ref="monthId" v-on:touchstart.stop.prevent="touchStartItem($event,containerOptions.monthContainer,2)" v-on:touchmove.stop.prevent="touchMoveItem($event,containerOptions.monthContainer,2)" v-on:touchend.stop.prevent="touchEndItem($event,containerOptions.monthContainer,2)">
                     <ul v-bind:style="{
                         transition:monthTransition,
-                        transform:monthTransform}" >
+                        transform:monthTransform}">
                         <li></li>
                         <li></li>
                         <li v-for="item in months" :key="item">
@@ -46,15 +36,10 @@
                         <li></li>
                     </ul>
                 </div>
-                <div class="ub-f1 picker-wrapper"  v-if="type.toString() == 1"
-                        id="dateId" 
-                        :ref="dateId"
-                         v-on:touchstart.stop.prevent="touchStartItem($event,containerOptions.dateContainer,3)" 
-                        v-on:touchmove.stop.prevent="touchMoveItem($event,containerOptions.dateContainer,3)" 
-                        v-on:touchend.stop.prevent="touchEndItem($event,containerOptions.dateContainer,3)">
+                <div class="ub-f1 picker-wrapper" v-if="type.toString() == 1" id="dateId" :ref="dateId" v-on:touchstart.stop.prevent="touchStartItem($event,containerOptions.dateContainer,3)" v-on:touchmove.stop.prevent="touchMoveItem($event,containerOptions.dateContainer,3)" v-on:touchend.stop.prevent="touchEndItem($event,containerOptions.dateContainer,3)">
                     <ul v-bind:style="{
                         transition:dateTransition,
-                        transform:dateTransform}"> 
+                        transform:dateTransform}">
                         <li></li>
                         <li></li>
                         <li v-for="item in dates" :key="item">
@@ -469,186 +454,180 @@
     };
 </script>
 
-<style >
- body {
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
-    -khtml-user-select: none;
-    user-select: none;
-}
+<style>
+    body {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        -khtml-user-select: none;
+        user-select: none;
+    }
 
-* {
-    margin: 0;
-    padding: 0;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    /*-webkit-touch-callout: none;*/
-}
+    * {
+        margin: 0;
+        padding: 0;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        /*-webkit-touch-callout: none;*/
+    }
 
-ul {
-    list-style: none outside none;
-}
+    ul {
+        list-style: none outside none;
+    }
 
-.fe-datetimepikcer-wrapper{
-    .picker-wrapper{
+    .fe-datetimepikcer-wrapper .picker-wrapper  {
         font-size: 16px;
     }
-    .picker-columns{
-        height: 245px;
+
+    .fe-datetimepikcer-wrapper .picker-columns  {
+        height: 245px;            
     }
-}
 
+    .ub {
+        display: -webkit-box !important;
+        display: box !important;
+        position: relative;
+    }
 
+    .ub-f1 {
+        position: relative;
+        -webkit-box-flex: 1;
+        box-flex: 1;
+    }
 
+    /*select*/
+    .dp_mask {
+        overflow: hidden;
+        font-size: 15px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba(0, 0, 0, 0);
+        z-index: 9998;
+    }
 
-.ub
-{
-    display: -webkit-box !important;
-    display: box !important;
-    position:relative;
-}
-.ub-f1
-{
-    position:relative;
-    -webkit-box-flex: 1;
-    box-flex: 1;
-}
+    .dp_select {
+        font-size: 15px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        color: #333;
+        background: #D1D5D8;
+        z-index: 9999;
+        -webkit-transition: 300ms all;
+        transition: 300ms all;
+    }
 
-/*select*/
-.zx_mask {
-    overflow: hidden;
-    font-size: 15px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100%;
-    width: 100%;
-    background: rgba(0,0,0,0);
-    z-index: 9998;
-}
+    .dp_select>header {
+        overflow: hidden;
+        width: 100%;
+        height: 45px;
+        line-height: 45px;
+        text-align: center;
+        background: #F0F1F2;
+        -webkit-box-shadow: 0 0 8px #333;
+        -moz-box-shadow: 0 0 8px #333;
+        box-shadow: 0 0 8px #333;
+    }
 
-.zx_select {
-    font-size: 15px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    /*height: 4.4rem;*/
-    /* height: 0; */
-    width: 100%;
-    color: #333;
-    background: #D1D5D8;
-    z-index: 9999;
-    -webkit-transition: 300ms all;
-    transition: 300ms all;
-}
+    .dp_select>header>h1 {
+        display: inline-block;
+        font-size: 15px;
+        font-weight: normal;
+    }
 
-.zx_select > header {
-    overflow: hidden;
-    width: 100%;
-    height: 45px;
-    line-height: 45px;
-    text-align: center;
-    background: #F0F1F2;
-    -webkit-box-shadow: 0 0 8px #333;
-    -moz-box-shadow: 0 0 8px #333;
-    box-shadow: 0 0 8px #333;
-}
-.zx_select > header > h1 {
-    display: inline-block;
-    font-size: 15px;
-    font-weight: normal;
-}
-.zx_select > header > button {
-    font-size: 15px;
-    height: 45px;
-    padding: 0 10px;
-    border: none;
-    outline: none;
-    color: #007AFF;
-    background: #F0F1F2;
-}
-.zx_select button.nav_left {
-    float: left;
-}
-.zx_select button.nav_right {
-    float: right;
-}
+    .dp_select>header>button {
+        font-size: 15px;
+        height: 45px;
+        padding: 0 10px;
+        border: none;
+        outline: none;
+        color: #007AFF;
+        background: #F0F1F2;
+    }
 
-.zx_select > p {
-    width: 100%;
-    line-height: 30px;
-    text-align: center;
-    font-size: 14px !important;
-}
-.zx_select > p > span {
-    display: block;
-}
+    .dp_select button.nav_left {
+        float: left;
+    }
 
-/*列表*/
-.zx_select > div {
-    overflow: hidden;
-    position: relative;
-    height: 200px;
-    text-align: center;
-}
-.zx_select > div > div.ub-f1 {
-    max-width: 100%;
-    min-width: 100%;
-}
-.zx_select ul {
-    line-height: 40px;
-}
-.zx_select ul > li {
-    height: 40px;
-    color: #2A2B2C;
-    padding: 0 10px !important;
-    margin: 0 !important;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-/*.zx_select ul > li:first-child {*/
-    /*padding-top: 80px;*/
-/*}*/
-/*.zx_select ul > li:last-child {*/
-    /*padding-bottom: 80px;*/
-/*}*/
+    .dp_select button.nav_right {
+        float: right;
+    }
 
-.zx_select .sel_middle {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 100%;
-    height: 40px;
-    margin-top: -20px;
-    pointer-events: none;
-    border-top: 1px solid #aaa;
-    border-bottom: 1px solid #aaa;
-}
+    .dp_select>p {
+        width: 100%;
+        line-height: 30px;
+        text-align: center;
+        font-size: 14px !important;
+    }
 
-.zx_select .sel_top {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 80px;
-    pointer-events: none;
-    background: rgba(209,213,216,0.7);
-}
-.zx_select .sel_bottom {
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 80px;
-    pointer-events: none;
-    background: rgba(209,213,216,0.7);
-}
+    .dp_select>p>span {
+        display: block;
+    }
 
+    /*列表*/
+    .dp_select>div {
+        overflow: hidden;
+        position: relative;
+        height: 200px;
+        text-align: center;
+    }
 
+    .dp_select>div>div.ub-f1 {
+        max-width: 100%;
+        min-width: 100%;
+    }
+
+    .dp_select ul {
+        line-height: 40px;
+    }
+
+    .dp_select ul>li {
+        height: 40px;
+        color: #2A2B2C;
+        padding: 0 10px !important;
+        margin: 0 !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    
+    .dp_select .sel_middle {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        width: 100%;
+        height: 40px;
+        margin-top: -20px;
+        pointer-events: none;
+        border-top: 1px solid #aaa;
+        border-bottom: 1px solid #aaa;
+    }
+
+    .dp_select .sel_top {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 80px;
+        pointer-events: none;
+        background: rgba(209, 213, 216, 0.7);
+    }
+
+    .dp_select .sel_bottom {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 80px;
+        pointer-events: none;
+        background: rgba(209, 213, 216, 0.7);
+    }
 </style>
